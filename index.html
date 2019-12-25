@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>Weather Dashboard</header>
+
+        <div id="leftDiv">
+            <div>
+                <h2>Search for a City:</h2>
+                <div>
+                    <input type="text">
+                    <button id="submitBtn">Submit</button>
+                </div>
+            </div>
+            <div id="prevSearches">
+            </div>
+        </div>
+
+        <div id="rightDiv">
+            <div>
+                <h1 id="city"></h1>
+                <p>Temp:<span id="temp"></span></p>
+                <p>Humidity:<span id="humidity"></span></p>
+                <p>UV Index:<span id="uv-index"></span></p>
+            </div>
+            <div>
+                <h1 id="5day">Five Day Forecast:</h1>
+                <div>
+                    <p>Date</p>
+                    <p>Icon</p>
+                    <p>Temp</p>
+                    <p>Humidity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="assets/script.js"></script>
+</body>
+</html>
