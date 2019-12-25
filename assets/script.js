@@ -1,8 +1,12 @@
 function onLoad(){
 
 $("#submitBtn").on("click", function(event){
-    event.preventDefault();
-    alert("Clicked")
+    event.preventDefault()
+    var userQuery = ($("#searchQuery").val())
+    var newBtn = $(`<button>${userQuery}</button>`)
+    newBtn.addClass(userQuery)
+    $("#prevSearches").append(newBtn)
+    $("#searchQuery").val("")    
 })
 
 
