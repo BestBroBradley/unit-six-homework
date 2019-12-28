@@ -35,7 +35,7 @@ $("#submitBtn").on("click", function (event) {
 
 $("#prevSearches").on("click", ".btn", function (event) {
     event.preventDefault()
-    queryUrl = (`https://api.openweathermap.org/data/2.5/weather?q=${this.id}&APPID=${apiKey}`)
+    queryUrl = (`https://api.openweathermap.org/data/2.5/weather?q=${this.id.split(" ").join("+")}&APPID=${apiKey}`)
     var fiveDayUrl
 
     $.ajax({
@@ -63,19 +63,6 @@ $("#prevSearches").on("click", ".btn", function (event) {
         
     })
 })
-
-// $("#submitBtn").on("click", function(event){
-//     event.preventDefault()
-//     userQuery = ($("#searchQuery").val())
-//     var newBtn = $(`<button id=${userQuery}>${userQuery}</button>`)
-//     newBtn.addClass("btn")
-//     $("#prevSearches").append(newBtn)
-//     $("#searchQuery").val("")
-//    
-//     $("#testDiv").text()
-// })
-
-// $
 
 buttonDisplay()
 }
