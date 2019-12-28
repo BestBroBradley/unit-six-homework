@@ -24,6 +24,9 @@ function onLoad() {
 
 
 $("#submitBtn").on("click", function (event) {
+    if ($("#searchQuery").val() === "") {
+        return
+    } else {
     event.preventDefault()
     userQuery = ($("#searchQuery").val())
     btnArray.push(userQuery)
@@ -31,6 +34,7 @@ $("#submitBtn").on("click", function (event) {
     console.log(btnArray)
     localStorage.setItem("button array", JSON.stringify(btnArray))
     buttonDisplay()
+    }
 })
 
 $("#prevSearches").on("click", ".btn", function (event) {
