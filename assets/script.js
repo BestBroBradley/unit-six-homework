@@ -40,13 +40,25 @@ $("#prevSearches").on("click", ".btn", function (event) {
     queryUrl = (`https://api.openweathermap.org/data/2.5/weather?q=${this.id.trim().split(" ").join("+")}&APPID=${apiKey}`)
     console.log(queryUrl)
     var fiveDayUrl
+    var UVindex
 
     $.ajax({
         url: queryUrl,
         method: "GET"
     }).then(function(response) {
         fiveDayUrl = (`https://api.openweathermap.org/data/2.5/forecast?id=${response.id}&APPID=${apiKey}`)
+        UVindex = (`https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${response.coord.lat}&lon=${response.coord.lon}&APPID=${apiKey}`)
         console.log(fiveDayUrl)
+        $("#temp").text(response.main.temp)
+        $("#humidity").text(response.main.humidity)
+        
+        $.ajax({
+            url: UVindex,
+            method: "GET"
+        }).then(function(UV) {
+            $("#uv-index").text(UV[0].value)
+        })
+        
         $.ajax({
             url: fiveDayUrl,
             method: "GET"
@@ -63,8 +75,6 @@ $("#prevSearches").on("click", ".btn", function (event) {
                 $("#fiveDayForecast").append(`<div>${fiveDayDate}${fiveDayIcon}${fiveDayTemp}${fiveDayHumidity}</div>`)
             }
         })
-        $("#temp").text(response.main.temp)
-        $("#humidity").text(response.main.humidity)
         
     })
 
