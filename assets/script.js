@@ -35,7 +35,7 @@ $("#submitBtn").on("click", function (event) {
 
 $("#prevSearches").on("click", ".btn", function (event) {
     event.preventDefault()
-    queryUrl = (`https://api.openweathermap.org/data/2.5/weather?q=${this.id.split(" ").join("+")}&APPID=${apiKey}`)
+    queryUrl = (`https://api.openweathermap.org/data/2.5/weather?q=${this.id.trim().split(" ").join("+")}&APPID=${apiKey}`)
     var fiveDayUrl
 
     $.ajax({
@@ -48,20 +48,22 @@ $("#prevSearches").on("click", ".btn", function (event) {
             url: fiveDayUrl,
             method: "GET"
         }).then(function(fiveDay) {
+            $("#fiveDayForecast").text("")
             for (var j = 5; j < 40; j+=8) {
                 console.log(fiveDay)
                 console.log(fiveDayUrl)
-                var fiveDayDate =  `<div>${fiveDay.list[j].dt}</div>`
+                var fiveDayDate =  `<div>${moment(fiveDay.list[j].dt_txt).format("MMM Do YYYY")}</div>`
                 var fiveDayIcon = `<div>Icon: ${fiveDay.list[j].main.temp}</div>`
                 var fiveDayTemp = `<div>Temp: ${fiveDay.list[j].main.temp}</div>`
                 var fiveDayHumidity = `<div>Humidity: ${fiveDay.list[j].main.humidity}</div>`
-                $("#fiveDayForecast").html(`<div>${fiveDayDate}${fiveDayIcon}${fiveDayTemp}${fiveDayHumidity}</div>`)
+                $("#fiveDayForecast").append(`<div>${fiveDayDate}${fiveDayIcon}${fiveDayTemp}${fiveDayHumidity}</div>`)
             }
         })
         $("#temp").text(response.main.temp)
         $("#humidity").text(response.main.humidity)
         
     })
+
 })
 
 buttonDisplay()
