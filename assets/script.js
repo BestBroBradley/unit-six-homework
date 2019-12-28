@@ -11,7 +11,6 @@ function onLoad() {
     // })
 
     btnArray = JSON.parse(localStorage.getItem("button array")) || [];
-    console.log(btnArray)
 
     function buttonDisplay() {
         $('#prevSearches').html("")
@@ -31,7 +30,6 @@ $("#submitBtn").on("click", function (event) {
     userQuery = ($("#searchQuery").val())
     btnArray.push(userQuery)
     $("#searchQuery").val("")
-    console.log(btnArray)
     localStorage.setItem("button array", JSON.stringify(btnArray))
     buttonDisplay()
     }
@@ -40,14 +38,15 @@ $("#submitBtn").on("click", function (event) {
 $("#prevSearches").on("click", ".btn", function (event) {
     event.preventDefault()
     queryUrl = (`https://api.openweathermap.org/data/2.5/weather?q=${this.id.trim().split(" ").join("+")}&APPID=${apiKey}`)
+    console.log(queryUrl)
     var fiveDayUrl
 
     $.ajax({
         url: queryUrl,
         method: "GET"
     }).then(function(response) {
-        console.log(response)
         fiveDayUrl = (`https://api.openweathermap.org/data/2.5/forecast?id=${response.id}&APPID=${apiKey}`)
+        console.log(fiveDayUrl)
         $.ajax({
             url: fiveDayUrl,
             method: "GET"
@@ -57,7 +56,8 @@ $("#prevSearches").on("click", ".btn", function (event) {
                 console.log(fiveDay)
                 console.log(fiveDayUrl)
                 var fiveDayDate =  `<div>${moment(fiveDay.list[j].dt_txt).format("MMM Do YYYY")}</div>`
-                var fiveDayIcon = `<div>Icon: ${fiveDay.list[j].main.temp}</div>`
+                console.log(fiveDay.list[j].weather[0].icon)
+                var fiveDayIcon = `<div><img src="http://openweathermap.org/img/w/${fiveDay.list[j].weather[0].icon}.png"></div>`
                 var fiveDayTemp = `<div>Temp: ${fiveDay.list[j].main.temp}</div>`
                 var fiveDayHumidity = `<div>Humidity: ${fiveDay.list[j].main.humidity}</div>`
                 $("#fiveDayForecast").append(`<div>${fiveDayDate}${fiveDayIcon}${fiveDayTemp}${fiveDayHumidity}</div>`)
