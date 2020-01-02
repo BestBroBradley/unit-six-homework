@@ -3,20 +3,40 @@
     display: flex;
 }
 
+h1 {
+    text-align: center
+}
+
+h2 {
+    margin: 5px auto;
+}
+
 #leftDiv {
-    border: 3px pink solid;
+    border: 2px black solid;
     flex: 1;
     text-align: center
 }
 
+#searchDiv {
+    margin: 10px auto;
+}
+
 .btn {
-    width: 95%;
-    margin: auto;
+    width: 90%;
+    margin: 3px auto;
 }
 
 #rightDiv {
-    border: 3px green solid;
+    border: 2px black solid;
     flex: 2;
+}
+
+#currentWeather {
+    padding: 10px 20px;
+}
+
+#fiveDayHeader{
+    padding: 0 20px;
 }
 
 #fiveDayForecast {
@@ -25,5 +45,11 @@
     flex-wrap: wrap;
 }
 .futureDate {
-    border: 3px fuchsia solid;
+    border: 3px black solid;
+    padding: 5px;
+    margin: 10px auto;
+}
+
+#city, #fiveDayDate {
+    border-bottom: 2px grey solid;
 }

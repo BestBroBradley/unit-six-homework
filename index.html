@@ -8,13 +8,15 @@
     <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 <body>
-    <header>Weather Dashboard</header>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
     <div class="container">
 
         <div id="leftDiv">
             <div>
                 <h2>Search for a City:</h2>
-                <div>
+                <div id="searchDiv">
                     <input id="searchQuery">
                     <button id="submitBtn">Submit</button>
                 </div>
@@ -24,13 +26,14 @@
         </div>
 
         <div id="rightDiv">
-            <div id="testDiv">
-                <h1 id="city"></h1>
+            <div id="currentWeather">
+                <h2 id="city"></h2>
                 <p>Temp: <span id="temp"></span></p>
                 <p>Humidity: <span id="humidity"></span></p>
                 <p>UV Index: <span id="uv-index"></span></p>
             </div>
-            <div id="fiveDayForecast">                
+            <h2 id="fiveDayHeader">Five Day Forecast:</h2>                
+            <div id="fiveDayForecast">
             </div>
         </div>
     </div>
