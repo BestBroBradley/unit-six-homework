@@ -2,7 +2,7 @@
 
 This website allows a user to acces the current weather and 5-day weather projection information for any given location, using the OpenWeather Api.
 
-![Link to site](https://bestbrobradley.github.io/unit-six-homework/)
+[Link to site](https://bestbrobradley.github.io/unit-six-homework/)
 
 The primary features include:
 -The ability to search for a new location
