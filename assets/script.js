@@ -15,7 +15,7 @@ function onLoad() {
     function buttonDisplay() {
         $('#prevSearches').html("")
     for (var i = 0; i < btnArray.length; i++) {
-        var newBtn = $(`<button id=${btnArray[i]}>${btnArray[i]}</button>`)
+        var newBtn = $(`<button id=${btnArray[i].split(" ").join("-")}>${btnArray[i]}</button>`)
         newBtn.addClass("btn")
         $("#prevSearches").append(newBtn)
     }
@@ -41,6 +41,7 @@ $("#prevSearches").on("click", ".btn", function (event) {
     console.log(queryUrl)
     var fiveDayUrl
     var UVindex
+    $("#city").text(this.id.split("-").join(" "))
 
     $.ajax({
         url: queryUrl,
@@ -48,7 +49,7 @@ $("#prevSearches").on("click", ".btn", function (event) {
     }).then(function(response) {
         fiveDayUrl = (`https://api.openweathermap.org/data/2.5/forecast?id=${response.id}&APPID=${apiKey}`)
         UVindex = (`https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${response.coord.lat}&lon=${response.coord.lon}&APPID=${apiKey}`)
-        console.log(fiveDayUrl)
+        console.log(UVindex)
         $("#temp").text(response.main.temp)
         $("#humidity").text(response.main.humidity)
         
