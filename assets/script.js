@@ -72,7 +72,7 @@ $("#prevSearches").on("click", ".btn", function (event) {
                 var fiveDayIcon = `<div><img src="http://openweathermap.org/img/w/${fiveDay.list[j].weather[0].icon}.png"></div>`
                 var fiveDayTemp = `<div>Temp: ${fiveDay.list[j].main.temp}</div>`
                 var fiveDayHumidity = `<div>Humidity: ${fiveDay.list[j].main.humidity}</div>`
-                $("#fiveDayForecast").append(`<div>${fiveDayDate}${fiveDayIcon}${fiveDayTemp}${fiveDayHumidity}</div>`)
+                $("#fiveDayForecast").append(`<div class="futureDate">${fiveDayDate}${fiveDayIcon}${fiveDayTemp}${fiveDayHumidity}</div>`)
             }
         })
         

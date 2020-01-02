@@ -1,0 +1,29 @@
+.container {
+    border: 3px grey solid;
+    display: flex;
+}
+
+#leftDiv {
+    border: 3px pink solid;
+    flex: 1;
+    text-align: center
+}
+
+.btn {
+    width: 95%;
+    margin: auto;
+}
+
+#rightDiv {
+    border: 3px green solid;
+    flex: 2;
+}
+
+#fiveDayForecast {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.futureDate {
+    border: 3px fuchsia solid;
+}
