@@ -28,9 +28,8 @@ function onLoad() {
         }).then(function (response) {
             fiveDayUrl = (`https://api.openweathermap.org/data/2.5/forecast?id=${response.id}&units=imperial&APPID=${apiKey}`)
             UVindex = (`https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${response.coord.lat}&lon=${response.coord.lon}&APPID=${apiKey}`)
-            console.log(UVindex)
             $("#temp").text(`${response.main.temp} F`)
-            $("#humidity").text(response.main.humidity)
+            $("#humidity").text(`${response.main.humidity}%`)
 
             $.ajax({
                 url: UVindex,
@@ -45,10 +44,7 @@ function onLoad() {
             }).then(function (fiveDay) {
                 $("#fiveDayForecast").text("")
                 for (var j = 5; j < 40; j += 8) {
-                    console.log(fiveDay)
-                    console.log(fiveDayUrl)
                     var fiveDayDate = `<div id="fiveDayDate">${moment(fiveDay.list[j].dt_txt).format("MMM Do, YYYY")}</div>`
-                    console.log(fiveDay.list[j].weather[0].icon)
                     var fiveDayIcon = `<div><img src="http://openweathermap.org/img/w/${fiveDay.list[j].weather[0].icon}.png"></div>`
                     var fiveDayTemp = `<div>Temp: ${fiveDay.list[j].main.temp} F</div>`
                     var fiveDayHumidity = `<div>Humidity: ${fiveDay.list[j].main.humidity}%</div>`
@@ -84,7 +80,6 @@ function onLoad() {
     $("#prevSearches").on("click", ".btn", function (event) {
         event.preventDefault()
         queryUrl = (`https://api.openweathermap.org/data/2.5/weather?q=${this.id.trim().split("-").join("+")}&units=imperial&APPID=${apiKey}`)
-        console.log(queryUrl)
         var fiveDayUrl
         var UVindex
         $("#city").text(this.id.split("-").join(" "))
