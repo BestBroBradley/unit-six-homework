@@ -75,6 +75,12 @@ function onLoad() {
         }
     })
 
+    $("#clearBtn").on("click", function(event) {
+        btnArray = []
+        localStorage.setItem("button array", JSON.stringify(btnArray))
+        $('#prevSearches').html("")
+    })
+
     $("#prevSearches").on("click", ".btn", function (event) {
         event.preventDefault()
         queryUrl = (`https://api.openweathermap.org/data/2.5/weather?q=${this.id.trim().split("-").join("+")}&units=imperial&APPID=${apiKey}`)
